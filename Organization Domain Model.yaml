@@ -1,0 +1,290 @@
+
+# this model represents the upper layer, human domain of horizontal org. it will serve as basis for ERP and BPM systems to be built from
+
+
+org:
+  name:
+  state:
+    active:
+    hiatus:
+    communicated_externally:
+  rules_of_conduct:
+    change_log:
+      grievance_ref:
+      proposal_ref:
+  charter:
+    values:
+    change_log:
+      proposal_ref:
+  org_inventory_items:
+    quantity:
+    name:
+    visibility:
+    subgroup_ref:
+    project_ref:
+  general_council:
+    included_subsections:
+      members_involved:
+  external_type:
+    illegible:
+    legible:
+
+environment_sector:
+  name:
+  social_level:
+    social_movement:
+    	mass_growth: 
+        strength:
+    social_group:                                                                                                                                                   
+      type:
+        friend:
+          condition:
+          tactical_interactions:
+            strategic_goal_ref:
+        neutral:
+        enemy:
+          condition:
+          tactical_interactions:
+            strategic_goal_ref:
+          my-org_knowledge: #v
+            accuracy: #v
+      calender_events_ref:
+      members:
+        name:
+        contact_info:
+          email:
+          phone_number:
+        timezone:
+  power_level:
+  external_resources:
+    notes:
+  calender_events_ref:
+  notes:
+    history:
+    power_diagram:
+  repression_level:
+  my-org_presence:
+  	growth:
+    reception:
+    meetup_locations:
+      visibility:
+  org_member_satelite:
+    related_members:
+      name:
+      contact_info:
+        email:
+        phone_number:
+      timezone:
+    calender_events_ref:
+  sub_sector:
+  super_sector:
+
+strategic_goal:
+  title:
+    desc:
+      general_desc:
+      local_env_desc:
+  obstacles:
+  priority: 'v'
+
+project:
+  name:
+  desc:
+  type:
+    internal:
+    external:
+      my-org_presence_changelog:
+      my-org_growth_changelog:
+  task: # role is combined with task
+    members_involved:
+      current_member_condition:
+        current_member_availability:
+        current_member_ergonomics:
+    tactic_ref:
+    dangers:
+      desc:
+      infosec_risk:
+    type:
+      permanent:
+      temporary:
+  social_group_affected:
+    decision_process:
+      desc:
+  calender_events_ref:
+  relevant_social_groups_ref:
+  subgroup_ref:
+
+member:
+  identity:
+    full_name:
+    nickname:
+    deadname:
+    pronouns:
+      subject:
+      object:
+  age:
+  contact_info:
+    email:
+    phone_number:
+  subsection_level:
+  subgroup_refs:
+  timezone:
+  disabilities:
+  capacity:
+  capacity:
+    actions:
+      weight:
+        exception: # boolean, results in 0 weight
+      task_ref:
+    capacity_continuum:
+    capacity_log:
+  active:
+    departure_date:
+
+calender: #e
+  years:
+    months:
+      days:
+        date:
+        event:
+          type: # not a monotype; all types can be selected
+            internal:
+            external:
+              power_map_change_notes:
+              env_reaction_type:
+                negative:
+                positive:
+                minimal:
+          strategic_goal_effect:
+          occurence_type:
+            recurring:
+              strategic_goal:
+            one-time:
+          members_involved:
+            predicted_available_members:
+            present_members:
+          project_ref:
+          time_duration:
+  
+grievance_process:
+  title:
+    desc:
+  state:
+    raised:
+    interlocutor_involved:
+    under_investigation:
+    under_deliberation:
+    active_threat:
+    resolved:
+  parties_involved:
+    members_involved:
+  calender_events_ref:
+  severity_level:
+    conflict:
+    harm:
+      offenders:
+      victims:
+    abuse:
+      offenders:
+      victims:
+  interlocutor_roles:
+  investigation_log:
+    calender_datetime_ref:
+  story:
+    changelog:
+      calender_datetime_ref:
+  outcome:
+
+subgroup: # represents both "mandate" and "self-org" subgroups. the latter type will be said to have a mandate, the main difference is just that the final say
+          # of that document is not necissarily decided by entire group; i.e black councils. also includes general one-person delegate roles
+  title:
+    desc:
+  external_type:
+    illegible:
+    legible:
+  internal_type:
+    illegible:
+      visibility_level:
+    legible:
+  members_involved:
+  mandate:
+    proposal_ref:
+    summary:
+    scope:
+  project_ref:
+  visibility:
+
+chatroom:
+  title:
+    desc:
+  project_ref:
+  members_involved:
+  visibility:
+  messages:
+    author:
+    content:
+    reply_to:
+  type:
+    permanent:
+    temporary:
+      destroy_after_completion:
+
+proposal:
+  title:
+    desc:
+  type:
+    general_council:
+    subgroup:
+      subgroup_ref:
+  members_involved:
+  thread:
+    post:
+      type:
+        introduction:
+          background:
+        deliberation:
+          new_proposal: 'o'
+        vote:
+          poll_data:
+            members:
+              agree:
+              neutral:
+              disagree:
+              block:
+        outcome:
+          subtype:
+            rejected:
+            passed:
+      content:
+      reply_to:
+      member:
+  state:
+    introduction:
+    deliberation:
+    vote:
+    outcome:
+  proposal_aftermath: # what happened when porposal was actually implemented 
+    desc:
+      type:
+        net_positive:
+        net_negative:
+    new_proposal_ref:
+  time_limit:
+
+non-subsection_visibility:
+  title:
+    desc:
+  members_involved:
+
+tactics:
+  title:
+    desc:
+  type:
+    offensive:
+    defensive:
+  strategic_goal_ref:
+
+subsections:
+  title:
+    desc:
+

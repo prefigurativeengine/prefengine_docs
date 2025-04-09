@@ -1,0 +1,254 @@
+
+# summary: model detailing the environment that the (mostly) technical layer of arch should be built on
+
+overlay-network:
+  temp_peers:
+    #! amount = max_peers - current_peers
+    #! amount = 0 if no peer group
+
+    state:
+      #! 1 selected
+      in_process:
+      done:
+
+    addresses:
+      #! at least 1 selected
+      - "ip"
+      - "reticulum_dest"
+      - "bluetooth"
+    nats:
+      is_symmetric:
+      auto-port-forward-enabled:
+
+    location:
+      #! global coord
+
+    ptp_conns: #V
+      #! < peers in overlay network
+      peer_ref:
+      strength:
+        msg_readiness:  # represents msgs recieved while dealing with previous msg
+          #! 0 - 2
+        signal_quality:
+          #! 1 - 50 (RSSI)
+      physical_type:
+        - "ip"
+        - "bluetooth"
+      visibility_permission_list:
+        visibilities.level:
+      net_type:
+        internet:
+        custom_net:
+    
+  network_env: #V
+    needed_foreign_addrs:
+      #! one of: google drive, google calender, discord, signal, onedrive
+    foreign_outgoing_conns:
+      foreign_addr:
+        #! must be needed_foreign_addrs
+      needed_sent_data:
+    foreign_incoming_conns:
+      #! conn never accepted
+  
+  visibilities: #E
+    #! 1 - peers amount
+    level:
+      #! 1 - visibilities amount
+    db_state_makeup:
+      prior_elements:
+        #! = all self_elements from lesser levels
+        self_elements_ref:
+      total_db_state.elements_ref:
+
+  total_db_state:
+    elements: #V # abstract for now
+
+  nats:
+    is_symmetric:
+    auto-port-forward-enabled:
+
+  expectant_temp_peers:
+    addresses:
+      #! at least 1 selected
+      - "ip"
+      - "reticulum_dest"
+      - "bluetooth"
+    nats:
+      is_symmetric:
+      auto-port-forward-enabled:
+    is_accepted:
+    visibilities.level_ref:
+
+  personal_owner: #E
+    preferred_auth_tactics:
+      #! at least 1 selected
+      password:
+      bioware:
+      questions:
+      puzzle:
+    owned_peers:
+      #! < peers in overlay network
+
+  peers: #E
+    #! 2 - 150
+    
+    app_disk:
+      space_left:
+        #! 0mb - 1,000,000mb
+      needed_files:
+        #! 2 - 10000
+        sensitivity_level:
+          normal:
+          critical: 
+        foriegn_accessed:
+          foreign_programs_ref:
+        encrypted:
+    
+    network_space: 
+      capability_type:
+        #! only 1 selected
+        desktop:
+        mobile: # will be limited especially during passive state, if secondary, could need to fetch db_state from primary device
+        server: # expected to be up indefintely
+        relay: # expected to be up indefintely, not expected to store dynamic info; can only relay data sent to it
+
+      visibility_ref:
+
+      state:
+        #! only 1 selected
+        active:
+        passive:
+        off:
+
+      has_sufficient_disk_space:
+        true:
+          #! space_left > 1mb
+        false:
+          #! space_left <= 1mb
+
+      cpu_strength:
+        #! 1 - 288 (cores)
+      mem_strength:
+        #! 128mb - 512000mb
+
+      using_vpn:
+        port_forward_enabled:
+
+      bandwidth_limit:
+        #! 100mb -> (150 - peers_amount) * total_db_state_size mb
+        #! resets to 0 every month beginning
+
+      org:
+        names:
+          computer_name:
+          human_name:
+            #! 2 > 50 ch
+        layer_level:
+          #! 1 > 150
+
+      personal_network_env: #V
+        needed_foreign_addrs:
+        foreign_outgoing_conns:
+          foreign_addr:
+            #! must be needed_foreign_addrs
+          needed_sent_data:
+
+      sec_type:
+        #! 1 selected
+        friendly:
+        compromised:
+
+      ptp_conns: #V
+        #! < peers amount
+        remote_peer_id:
+          #! != local peer id
+        nat_info:
+          remote_nat_ref:
+          nat_traversal_type:
+            #! remote_nat_ref must be set if this is set
+            port_forwarded:
+            server_hole_punched:
+            peer_hole_punched:
+        strength:
+          msg_readiness: # represents msgs recieved while dealing with previous msg
+            #! 0 - 2
+          signal_quality:
+            #! 1 - 50 (RSSI)
+        physical_type:
+          #! at least 1 set
+          - "ip"
+          - "bluetooth"
+        visibility_permission_list:
+          remote_peer_visibility.level:
+        net_type:
+          internet:
+          custom_net:
+
+      ptp_temp_conns: #V
+        #! < peers amount
+        remote_temp_peer_id:
+
+        nat_info:
+          remote_nat_cpy: # would have to be gotten in external communication method like texting
+          nat_traversal_type:
+            #! remote_nat_cpy must be set if this is set
+            port_forwarded:
+            server_hole_punched:
+            peer_hole_punched:
+
+        strength:
+          msg_readiness:
+            #! 0 - 2
+          signal_quality:
+            #! 1 - 50 (RSSI)
+
+        physical_type:
+          - "tcp"
+          - "bluetooth"
+
+        visibility_permission_list:
+          remote_temp_peer_visibility.level:
+
+        net_type:
+          internet:
+          custom_net:
+
+      radio_ts: #V
+        data:
+          peer_refs:
+          strength:
+            msg_readiness:
+              #! 0 - 2
+            signal_quality:
+              #! 1 - 50 (RSSI)
+          visibility_type:
+            remote_temp_peer_visibility.level:
+
+      location: #V
+        #! global coord
+
+      current_nat_ref:
+
+      owner:
+        personal:
+          personal_owner_ref:
+        collective:
+
+      addresses:
+        #! at least 1 set
+        - "ip"
+        - "reticulum_dest"
+        - "bluetooth"
+  
+  satelite_peers: #E
+    com_type: 
+      sms:
+        number:
+          #! phone number format
+      email:
+        addr:
+          #! email format
+      phone_call:
+        number:
+          #! phone number format
+
