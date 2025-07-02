@@ -8,8 +8,9 @@ overlay-network:
 
     state:
       #! 1 selected
-      in_process:
-      done:
+      added:
+      onboarding:
+      becoming_peer:
 
     addresses:
       #! at least 1 selected
